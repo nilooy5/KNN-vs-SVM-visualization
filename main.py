@@ -1,4 +1,5 @@
 import tkinter as tk
+import training as training
 
 window = tk.Tk()
 window.title('Programming for Data Science')
@@ -145,5 +146,10 @@ button = tk.Button(
 )
 
 button.place(x=10, y=300)
+
+training.run_classification(
+    dataset_name=dataset_name.get(),
+    classification_name=classifier_name.get(),
+    number_of_folds=5)
 
 window.mainloop()
