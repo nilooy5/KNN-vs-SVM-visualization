@@ -39,7 +39,7 @@ def select_dataset():
 
 
 # Add variable var and 2 radio buttons
-dataset_name = tk.StringVar(value="iris")
+dataset_name = tk.StringVar(value="wine")
 
 rb_iris = tk.Radiobutton(
     text="Iris",
@@ -91,7 +91,7 @@ lbl_classifier = tk.Label(
 lbl_classifier.place(x=10, y=150)
 
 # Add variable var and 2 radio buttons
-classifier_name = tk.StringVar(value="KNN")
+classifier_name = tk.StringVar(value="svc")
 
 
 def select_classifier():
@@ -131,6 +131,11 @@ lbl_selected_classifier.place(x=10, y=200)
 def select_widget_values():
     select_dataset()
     select_classifier()
+    training.run_classification(
+        dataset_name=dataset_name.get(),
+        classification_name=classifier_name.get(),
+        number_of_folds=5
+    )
     print(classifier_name.get(), dataset_name.get())
 
 
@@ -146,10 +151,5 @@ button = tk.Button(
 )
 
 button.place(x=10, y=300)
-
-training.run_classification(
-    dataset_name=dataset_name.get(),
-    classification_name=classifier_name.get(),
-    number_of_folds=5)
 
 window.mainloop()
