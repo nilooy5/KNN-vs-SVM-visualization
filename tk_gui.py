@@ -3,7 +3,7 @@ import training as training
 
 # Set font
 myFont = "Arial, 12"
-myFont_big = "Arial, 15"
+myFont_big = "Arial, 15 bold"
 myFont_medium = "Arial, 10"
 myFont_small = "Arial, 8"
 
@@ -11,7 +11,7 @@ myFont_small = "Arial, 8"
 def main_gui():
     window = tk.Tk()
     window.title('Programming for Data Science')
-    window.geometry("1400x750+100+100")
+    window.geometry("700x500+400+100")
 
     # Add a label
     lbl_header = tk.Label(

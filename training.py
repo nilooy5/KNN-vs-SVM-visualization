@@ -49,13 +49,13 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
     label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_))
-    label_best_parameter.config(text='Accuracy (%): ' + str(gscv_classifier.best_score_))
     print("Best parameter:", gscv_classifier.best_params_)
     print("accuracy: %0.3f" % gscv_classifier.best_score_)
 
     y_pred = gscv_classifier.predict(X_test)
     # • Plot confusion matrix and accuracy
     accuracy = metrics.accuracy_score(Y_test, y_pred) * 100
+    label_best_parameter.config(text='Accuracy = {0:.2f}%'.format(accuracy))
     plotcm = metrics.ConfusionMatrixDisplay.from_estimator(gscv_classifier, X_test, Y_test, display_labels=class_names)
     plotcm.ax_.set_title('Accuracy = {0:.2f}%'.format(accuracy))
     plt.show()
