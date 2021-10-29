@@ -6,7 +6,7 @@ window.title('Programming for Data Science')
 window.geometry("1400x750+100+100")
 
 # Set font
-myFont = "Arial, 16"
+myFont = "Arial, 12"
 # Add a label
 lbl_header = tk.Label(
     text="A Simple GUI App",
@@ -134,7 +134,8 @@ def select_widget_values():
     training.run_classification(
         dataset_name=dataset_name.get(),
         classification_name=classifier_name.get(),
-        number_of_folds=5
+        number_of_folds=5,
+        root=window
     )
     print(classifier_name.get(), dataset_name.get())
 

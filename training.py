@@ -1,9 +1,15 @@
+import tkinter
+
+import numpy as np
+from matplotlib.backends._backend_tk import NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 from sklearn import datasets, neighbors, metrics, mixture, svm
 from sklearn.model_selection import train_test_split, GridSearchCV
 import matplotlib.pyplot as plt
 
 
-def run_classification(dataset_name, classification_name, number_of_folds):
+def run_classification(dataset_name, classification_name, number_of_folds, root):
     if dataset_name == 'iris':
         dataset = datasets.load_iris()
     elif dataset_name == 'breast_cancer':
@@ -44,13 +50,26 @@ def run_classification(dataset_name, classification_name, number_of_folds):
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
     print("Best parameter:", gscv_classifier.best_params_)
+    print("accuracy: %0.3f" % gscv_classifier.best_score_)
 
     y_pred = gscv_classifier.predict(X_test)
     # • Plot confusion matrix and accuracy
     accuracy = metrics.accuracy_score(Y_test, y_pred) * 100
-    plotcm = metrics.plot_confusion_matrix(gscv_classifier, X_test, Y_test, display_labels=class_names)
+    plotcm = metrics.ConfusionMatrixDisplay.from_estimator(gscv_classifier, X_test, Y_test, display_labels=class_names)
     plotcm.ax_.set_title('Accuracy = {0:.2f}%'.format(accuracy))
     plt.show()
+
+    # fig2 = Figure(figsize=(3, 3), dpi=100)
+    # t2 = np.arange(0, 3, .01)
+    # fig2.add_subplot(111).plot(y_pred)
+    #
+    # canvas2 = FigureCanvasTkAgg(fig2, master=root)  # A tk.DrawingArea.
+    # canvas2.draw()
+    # canvas2.get_tk_widget().pack(side=tkinter.TOP, expand=0)
+
+    # toolbar2 = NavigationToolbar2Tk(canvas2, root)
+    # toolbar2.update()
+    # canvas2.get_tk_widget().pack(side=tkinter.TOP, expand=0)
 
     x_axis = list(parameter[0].values())[0]
     y_axis = means
@@ -58,3 +77,12 @@ def run_classification(dataset_name, classification_name, number_of_folds):
     plot_axes = plt.axes()
     plot_axes.plot(x_axis, y_axis, line_style)
     plt.show()
+
+    # fig3 = Figure(figsize=(3, 3), dpi=100)
+    # t3 = np.arange(0, 3, .01)
+    # fig3.add_subplot(111).plot(x_axis, y_axis)
+    #
+    # canvas3 = FigureCanvasTkAgg(fig3, master=root)  # A tk.DrawingArea.
+    # canvas3.draw()
+    # canvas3.get_tk_widget().pack(side=tkinter.TOP, expand=0)
+
