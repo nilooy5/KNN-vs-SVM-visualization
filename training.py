@@ -23,7 +23,6 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
     elif classification_name == 'svc':
         classifier = svm.SVC()
         parameter = [{'gamma': [0.0001, 0.001, 0.01, 0.1, 1.0]}]
-    print(dataset_name, classification_name, number_of_folds)
 
     x = dataset.data
     y = dataset.target
@@ -49,8 +48,8 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
     for mean, std, param in zip(means, stds, results):
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
-    label_accuracy.config(text=gscv_classifier.best_params_)
-    label_best_parameter.config(text=gscv_classifier.best_score_)
+    label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_))
+    label_best_parameter.config(text='Accuracy: ' + str(gscv_classifier.best_score_))
     print("Best parameter:", gscv_classifier.best_params_)
     print("accuracy: %0.3f" % gscv_classifier.best_score_)
 
@@ -75,7 +74,7 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
 
     x_axis = list(parameter[0].values())[0]
     y_axis = means
-    line_style = 'r--'
+    line_style = 'b--'
     plot_axes = plt.axes()
     plot_axes.plot(x_axis, y_axis, line_style)
     plt.show()

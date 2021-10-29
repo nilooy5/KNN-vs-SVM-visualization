@@ -150,18 +150,25 @@ def main_gui():
     entry_fold = tk.Entry(window, bd=5, textvariable=fold_value)
     entry_fold.place(x=180, y=200)
 
+    lbl_error = tk.Label(window, text="", font=myFont_small, fg="red")
+    lbl_error.place(x=180, y=220)
+
     def select_widget_values():
-        select_dataset()
-        select_classifier()
-        training.run_classification(
-            dataset_name=dataset_name.get(),
-            classification_name=classifier_name.get(),
-            number_of_folds=int(fold_value.get()),
-            root=window,
-            label_best_parameter=lbl_best_param,
-            label_accuracy=lbl_accuracy
-        )
-        print(classifier_name.get(), dataset_name.get())
+        lbl_error.config(text="")
+        try:
+            folds = int(fold_value.get())
+            select_dataset()
+            select_classifier()
+            training.run_classification(
+                dataset_name=dataset_name.get(),
+                classification_name=classifier_name.get(),
+                number_of_folds=folds,
+                root=window,
+                label_best_parameter=lbl_best_param,
+                label_accuracy=lbl_accuracy
+            )
+        except ValueError:
+            lbl_error.config(text='put a valid number > 1')
 
     # Run button
     button = tk.Button(
