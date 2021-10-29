@@ -123,7 +123,28 @@ def main_gui():
         height=1,
         font=myFont
     )
-    lbl_selected_classifier.place(x=10, y=200)
+    lbl_selected_classifier.place(x=10, y=170)
+
+
+    # Label to display output when button is clicked
+    lbl_best_param = tk.Label(
+        text="",
+        fg="navy",
+        width=25,
+        height=1,
+        font=myFont
+    )
+    lbl_best_param.place(x=10, y=220)
+
+    # Label to display output when button is clicked
+    lbl_accuracy = tk.Label(
+        text="",
+        fg="navy",
+        width=25,
+        height=1,
+        font=myFont
+    )
+    lbl_accuracy.place(x=10, y=250)
 
 
     def select_widget_values():
@@ -133,7 +154,9 @@ def main_gui():
             dataset_name=dataset_name.get(),
             classification_name=classifier_name.get(),
             number_of_folds=5,
-            root=window
+            root=window,
+            label_best_parameter=lbl_best_param,
+            label_accuracy=lbl_accuracy
         )
         print(classifier_name.get(), dataset_name.get())
 

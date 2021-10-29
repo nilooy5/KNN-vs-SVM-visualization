@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 import matplotlib.pyplot as plt
 
 
-def run_classification(dataset_name, classification_name, number_of_folds, root):
+def run_classification(dataset_name, classification_name, number_of_folds, root, label_best_parameter, label_accuracy):
     if dataset_name == 'iris':
         dataset = datasets.load_iris()
     elif dataset_name == 'breast_cancer':
@@ -49,6 +49,8 @@ def run_classification(dataset_name, classification_name, number_of_folds, root)
     for mean, std, param in zip(means, stds, results):
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
+    label_accuracy.config(text=gscv_classifier.best_params_)
+    label_best_parameter.config(text=gscv_classifier.best_score_)
     print("Best parameter:", gscv_classifier.best_params_)
     print("accuracy: %0.3f" % gscv_classifier.best_score_)
 
