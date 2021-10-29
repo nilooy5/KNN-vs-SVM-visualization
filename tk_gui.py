@@ -13,7 +13,7 @@ def main_gui():
 
     # Add a label
     lbl_header = tk.Label(
-        text="A Simple GUI App",
+        text="Assignment 2",
         font=myFont,
         height=1
     )
@@ -37,7 +37,7 @@ def main_gui():
 
 
     # Add variable var and 2 radio buttons
-    dataset_name = tk.StringVar(value="wine")
+    dataset_name = tk.StringVar(value="iris")
 
     rb_iris = tk.Radiobutton(
         text="Iris",
@@ -75,7 +75,7 @@ def main_gui():
         height=1,
         font=myFont
     )
-    lbl_selected_dataset.place(x=10, y=100)
+    lbl_selected_dataset.place(x=10, y=70)
 
     # Add label
     lbl_classifier = tk.Label(
@@ -86,10 +86,10 @@ def main_gui():
         height=1,
         font=myFont
     )
-    lbl_classifier.place(x=10, y=150)
+    lbl_classifier.place(x=10, y=120)
 
     # Add variable var and 2 radio buttons
-    classifier_name = tk.StringVar(value="svc")
+    classifier_name = tk.StringVar(value="KNN")
 
 
     def select_classifier():
@@ -104,7 +104,7 @@ def main_gui():
         font=myFont,
         command=select_classifier
     )
-    rb_knn.place(x=180, y=150)
+    rb_knn.place(x=180, y=120)
 
     rb_svc = tk.Radiobutton(
         text="Support Vector Classification",
@@ -113,7 +113,7 @@ def main_gui():
         font=myFont,
         command=select_classifier
     )
-    rb_svc.place(x=350, y=150)
+    rb_svc.place(x=350, y=120)
 
     # Label to display output when button is clicked
     lbl_selected_classifier = tk.Label(
