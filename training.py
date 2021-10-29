@@ -49,7 +49,7 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
     label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_))
-    label_best_parameter.config(text='Accuracy: ' + str(gscv_classifier.best_score_))
+    label_best_parameter.config(text='Accuracy (%): ' + str(gscv_classifier.best_score_))
     print("Best parameter:", gscv_classifier.best_params_)
     print("accuracy: %0.3f" % gscv_classifier.best_score_)
 

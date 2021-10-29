@@ -3,6 +3,7 @@ import training as training
 
 # Set font
 myFont = "Arial, 12"
+myFont_big = "Arial, 15"
 myFont_medium = "Arial, 10"
 myFont_small = "Arial, 8"
 
@@ -127,21 +128,21 @@ def main_gui():
     lbl_best_param = tk.Label(
         text="",
         fg="navy",
-        width=25,
+        width=50,
         height=1,
-        font=myFont
+        font=myFont_big
     )
-    lbl_best_param.place(x=10, y=220)
+    lbl_best_param.place(x=10, y=350)
 
     # Label to display output when button is clicked
     lbl_accuracy = tk.Label(
         text="",
         fg="navy",
-        width=25,
+        width=50,
         height=1,
-        font=myFont
+        font=myFont_big
     )
-    lbl_accuracy.place(x=10, y=250)
+    lbl_accuracy.place(x=10, y=380)
 
     fold_value = tk.StringVar(value="5")
 
