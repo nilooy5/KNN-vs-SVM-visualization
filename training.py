@@ -48,9 +48,9 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
     for mean, std, param in zip(means, stds, results):
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
-    label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_))
-    print("Best parameter:", gscv_classifier.best_params_)
-    print("accuracy: %0.3f" % gscv_classifier.best_score_)
+
+    label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_) + ' score: {0:.2f}%'.format(gscv_classifier.best_score_))
+    print("Best parameter:" + str(gscv_classifier.best_params_) + ' accuracy: {0:.2f}%'.format(gscv_classifier.best_score_))
 
     y_pred = gscv_classifier.predict(X_test)
     # • Plot confusion matrix and accuracy
@@ -74,7 +74,7 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
 
     x_axis = list(parameter[0].values())[0]
     y_axis = means
-    line_style = 'b--'
+    line_style = ''
     plot_axes = plt.axes()
     plot_axes.plot(x_axis, y_axis, line_style)
     plt.show()
