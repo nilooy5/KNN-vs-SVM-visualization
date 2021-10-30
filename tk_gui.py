@@ -99,7 +99,7 @@ def main_gui():
     lbl_selected_classifier = tk.Label(
         text="",
         fg="red",
-        width=25,
+        width=20,
         height=1,
         font=myFont_small
     )

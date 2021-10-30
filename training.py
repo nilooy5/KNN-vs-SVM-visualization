@@ -66,12 +66,12 @@ def run_classification(dataset_name, classification_name, number_of_folds, label
     label_best_parameter.config(
         text='Best parameter: '
              + str(gscv_classifier.best_params_)
-             + ' score: {0:.2f}%'.format(gscv_classifier.best_score_)
+             + ' score: {0:.2f}'.format(gscv_classifier.best_score_)
     )
     # printing the best parameter and its accuracy score on console
     print("Best parameter:"
           + str(gscv_classifier.best_params_)
-          + ' & accuracy score: {0:.2f}%'.format(gscv_classifier.best_score_))
+          + ' & accuracy score: {0:.2f}'.format(gscv_classifier.best_score_))
 
     # trying to predict the dataset with test data
     y_pred = gscv_classifier.predict(X_test)
