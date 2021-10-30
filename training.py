@@ -49,7 +49,11 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
         print("Parameter: %r, accuracy: %0.3f (+/-%0.03f)" % (param, mean, std * 2))
     print()
 
-    label_accuracy.config(text='Best parameter: ' + str(gscv_classifier.best_params_) + ' score: {0:.2f}%'.format(gscv_classifier.best_score_))
+    label_accuracy.config(
+        text='Best parameter: '
+             + str(gscv_classifier.best_params_)
+             + ' score: {0:.2f}%'.format(gscv_classifier.best_score_)
+    )
     print("Best parameter:" + str(gscv_classifier.best_params_) + ' accuracy: {0:.2f}%'.format(gscv_classifier.best_score_))
 
     y_pred = gscv_classifier.predict(X_test)
@@ -71,6 +75,10 @@ def run_classification(dataset_name, classification_name, number_of_folds, root,
     # toolbar2 = NavigationToolbar2Tk(canvas2, root)
     # toolbar2.update()
     # canvas2.get_tk_widget().pack(side=tkinter.TOP, expand=0)
+
+    #   TODO: plot axis names
+    #   TODO: try embedding plots in tkinter
+    #   TODO: remove unnecessary module imports
 
     x_axis = list(parameter[0].values())[0]
     y_axis = means
