@@ -16,7 +16,7 @@ def main_gui():
 
     # a label for the header
     lbl_header = tk.Label(
-        text="Assignment 2 by Fazal Mahmud Niloy (u3228358)",
+        text="by Fazal Mahmud Niloy",
         font=myFont_big,
         height=1
     )

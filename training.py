@@ -3,8 +3,6 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 import matplotlib.pyplot as plt
 
 
-# this method does the whole calculations for modeling and matplotlib plot creation, this has been directly copied from
-# tutorial 12 with minor changes where necessary
 # this method takes necessary data and configurations from select_widget_values of tk_gui.py such as
 # dataset name, classification name, number of folds, object of best parameter label and object of accuracy
 def run_classification(dataset_name, classification_name, number_of_folds, label_best_parameter, label_accuracy):
